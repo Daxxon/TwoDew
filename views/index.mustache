@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DO THINGS</title>
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+  </head>
+  <body>
+    <!-- insert shit here -->
+    <h1>HERE ARE YOUR ORDERS: </h1>
+    <form action="/addItem" method="post">
+      <input type='text' name='task' placeholder='task'></input>
+      <input type="submit" value="Submit">
+    </form>
+
+    {{#todos}}
+      {{^complete}}
+        <span>{{task}}</span>
+        <form action="/complete" method="post">
+          <button name="task" value="{{task}}" type="submit">Mark Complete</button>
+        </form>
+      {{/complete}}
+      {{#complete}}
+        <p style="text-decoration: line-through">{{task}}</p>
+      {{/complete}}
+    {{/todos}}
+  </body>
+</html>
